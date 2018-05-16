@@ -8,9 +8,13 @@ node_js:
 cache:
   directories:
     - "node_modules"
-before_install:
 
+addons:
+  chrome: stable
+
+before_install:
   - npm i -g npm@latest
+
 install:
   - npm install
 
