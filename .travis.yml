@@ -12,11 +12,16 @@ before_install:
   - npm i -g npm@latest
 install:
   - npm install
-script:
-  - npm run test
-  - npm run e2e
-  - npm run lint
-  - npm run build
+jobs:
+  include:
+    - stage: Test
+      script: npm run test:ci
+    - stage: End to End
+      script: npm run e2e:ci
+    - stage: Lint
+      script: npm run lint
+    - stage: Build
+      script: npm run build
 notifications:
   email:
     on_failure: change
