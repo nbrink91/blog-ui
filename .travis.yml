@@ -14,14 +14,10 @@ install:
   - npm install
 jobs:
   include:
-    - stage: Test
+    - stage: test
       script: npm run test:ci
-    - stage: End to End
-      script: npm run e2e:ci
-    - stage: Lint
-      script: npm run lint
-    - stage: Build
-      script: npm run build
+    - script: npm run e2e:ci
+    - script: npm run lint
 notifications:
   email:
     on_failure: change
