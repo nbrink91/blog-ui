@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "test:ci": "ng test --single-run --no-progress --browser=ChromeNoSandbox",
+    "e2e:ci": "ng e2e --no-progress --config=protractor-ci.conf.js"
   },
   "private": true,
   "dependencies": {
