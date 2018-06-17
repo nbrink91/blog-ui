@@ -1,0 +1,34 @@
+<mat-card id="contact-card">
+  <form [formGroup]="contactForm" id="contact-form">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name" formControlName="name" required>
+        <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
+          Name is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
+          Email is
+          <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea matInput cdkAutosizeTextarea placeholder="Message" formControlName="message" required></textarea>
+        <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
+          Message is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!contactForm.valid">Submit</button>
+    </mat-card-actions>
+    <mat-spinner *ngIf="submitting" class="contact-spinner" strokeWidth="2"></mat-spinner>
+  </form>
+</mat-card>

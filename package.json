@@ -1,6 +1,6 @@
 {
   "name": "@nicholasbrink/blog",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,20 +10,26 @@
     "e2e": "ng e2e",
     "release": "semantic-release",
     "test:ci": "ng test --single-run --no-progress --browser=ChromeNoSandbox",
-    "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js"
+    "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.2",
+    "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.2.0",
     "@angular/common": "^6.0.2",
     "@angular/compiler": "^6.0.2",
     "@angular/core": "^6.0.2",
     "@angular/forms": "^6.0.2",
     "@angular/http": "^6.0.2",
+    "@angular/material": "^6.2.0",
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
+    "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
+    "firebase": "^5.0.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -44,9 +50,14 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^1.1.0",
     "protractor": "~5.3.0",
-    "semantic-release": "^15.4.1",
+    "semantic-release": "^15.5.4",
     "ts-node": "~6.0.3",
     "tslint": "~5.10.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "travis-deploy-once": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nbrink91/blog-ui.git"
   }
 }

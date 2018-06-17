@@ -3,14 +3,11 @@ dist: trusty
 language: node_js
 node_js:
   - "lts/*"
+services:
+  - docker
 cache:
   directories:
-    - ~/.npm
-    - node_modules
-notifications:
-  email:
-    on_failure: change
-    on_success: change
+    - "node_modules"
 addons:
   chrome: stable
 before_install:
@@ -24,7 +21,9 @@ jobs:
     - script: npm run e2e:ci
     - script: npm run lint
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  - docker build -t ${IMAGE_NAME} .
+  - docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
+notifications:
+  email:
+    on_failure: change
+    on_success: change
