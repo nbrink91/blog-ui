@@ -24,13 +24,10 @@ jobs:
       services:
         - docker
       script:
-        - npm run semantic-release
         - npm run build:ci
-        - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
         - docker build -t ${IMAGE_NAME} .
         - docker images
-        - docker push "${IMAGE_NAME}:latest"
-        - docker push "${IMAGE_NAME}:${version}"
+        - npm run semantic-release
 stages:
   - test
   - name: release
