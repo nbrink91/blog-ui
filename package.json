@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "semantic-release",
+    "build:ci": "ng build --progress=false --watch=false",
     "test:ci": "ng test --progress=false --watch=false --browsers=ChromeTravisCI",
     "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
     "travis-deploy-once": "travis-deploy-once",

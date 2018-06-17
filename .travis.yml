@@ -17,17 +17,18 @@ install:
 jobs:
   include:
     - stage: test
-      script: npm run test:ci
+      script: npm run lint
+    - script: npm run test:ci
     - script: npm run e2e:ci
-    - script: npm run lint
     - stage: release
       services:
         - docker
       script:
         - npm run semantic-release
-        - npm run build
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - npm run build:ci
+        - docker login -u "$DOCKER_USERNAME" --p "$DOCKER_PASSWORD"
         - docker build -t ${IMAGE_NAME} .
+        - docker images
         - docker push "${IMAGE_NAME}:latest"
         - docker push "${IMAGE_NAME}:${version}"
 stages:
