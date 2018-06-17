@@ -20,14 +20,23 @@ install:
 jobs:
   include:
     - stage: test
-      script: npm run test:ci
-      script: npm run e2e:ci
-      script: npm run lint
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release --debug"
-  - npm run travis-deploy-once "docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD"
-  - npm run travis-deploy-once "docker build -t ${IMAGE_NAME} ."
-  - npm run travis-deploy-once "docker push \"${IMAGE_NAME}:latest\" && docker push \"${IMAGE_NAME}:${version}\""
+    - script: npm run test:ci
+    - script: npm run e2e:ci
+    - script: npm run lint
+    - stage: release
+      services:
+        - docker
+      script:
+        - npm run semantic-release
+        - npm run build
+        - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+        - docker build -t ${IMAGE_NAME} .
+        - docker push "${IMAGE_NAME}:latest"
+        - docker push "${IMAGE_NAME}:${version}"
+stages:
+  - test
+  - name: release
+    if: branch = master
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
