@@ -14,7 +14,6 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.5",
     "@angular/cdk": "^6.2.1",
