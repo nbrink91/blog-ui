@@ -21,10 +21,8 @@ jobs:
   include:
     - stage: test
       script: npm run test:ci
-    - stage: e2e
-      script: npm run e2e:ci
-    - stage: lint
-      script: npm run lint
+    - script: npm run e2e:ci
+    - script: npm run lint
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
