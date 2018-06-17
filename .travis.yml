@@ -24,7 +24,7 @@ jobs:
       script: npm run e2e:ci
       script: npm run lint
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - npm run travis-deploy-once "npm run semantic-release --debug"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
