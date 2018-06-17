@@ -18,6 +18,8 @@ export class ContactComponent implements OnInit {
 
   submitting = false;
 
+  spinnerSize: number;
+
   constructor(public httpClient: ApiHttpClientService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -33,10 +35,12 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  async onSubmit() {
+  async onSubmit(event: any) {
+    console.log(event.target.clientHeight);
+    this.spinnerSize = event.target.clientHeight;
     this.submitting = true;
     await this.httpClient.createContact(this.contactForm.value);
-    this.createForm();
+    this.contactForm.reset();
     this.submitting = false;
     this.snackBar.open('Message sent successfully!', undefined, {duration: 3000});
   }

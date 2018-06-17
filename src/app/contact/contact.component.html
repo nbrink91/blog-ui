@@ -1,10 +1,11 @@
-<mat-card id="contact-card">
-  <form [formGroup]="contactForm" id="contact-form">
-    <mat-card-content>
+<div class="container" fxLayout="row" fxLayout.xs="column">
+  <div id="contact-title" fxFlex [fxLayout]="direction">Contact</div>
+  <div fxFlex>
+    <form *ngIf="!submitting" [formGroup]="contactForm" id="contact-form" (ngSubmit)="onSubmit($event)">
       <mat-form-field class="full-width">
         <input matInput placeholder="Name" formControlName="name" required>
         <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
-          Name is
+          Name is0
           <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -25,10 +26,8 @@
           <strong>required</strong>
         </mat-error>
       </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!contactForm.valid">Submit</button>
-    </mat-card-actions>
-    <mat-spinner *ngIf="submitting" class="contact-spinner" strokeWidth="2"></mat-spinner>
-  </form>
-</mat-card>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">Submit</button>
+    </form>
+    <mat-spinner *ngIf="submitting" id="contact-spinner" diameter="{{spinnerSize}}"></mat-spinner>
+  </div>
+</div>

@@ -9,11 +9,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
-import { ApiHttpClientService } from './api-http-client.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -31,9 +33,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatGridListModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatDividerModule,
+
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
