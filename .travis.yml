@@ -21,11 +21,10 @@ jobs:
   include:
     - stage: test
       script: npm run test:ci
-    - script: npm run e2e:ci
-    - script: npm run lint
+      script: npm run e2e:ci
+      script: npm run lint
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
-    
