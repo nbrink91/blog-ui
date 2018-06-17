@@ -25,6 +25,9 @@ jobs:
       script: npm run lint
 after_success:
   - npm run travis-deploy-once "npm run semantic-release --debug"
+  - npm run travis-deploy-once "docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD"
+  - npm run travis-deploy-once "docker build -t ${IMAGE_NAME} ."
+  - npm run travis-deploy-once "docker push \"${IMAGE_NAME}:latest\" && docker push \"${IMAGE_NAME}:${version}\""
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
