@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Contact from './contact/model/contact';
-import { environment } from '../environments/environment.prod';
+import Contact from './model/contact';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiHttpClientService {
-
+export class ContactHttpClientService {
   private baseUrl = 'https://us-central1-portfolio-8d021.cloudfunctions.net/api';
 
   constructor(public httpClient: HttpClient) { }

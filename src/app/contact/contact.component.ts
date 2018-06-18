@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 
 import Contact from './model/contact';
-import { ApiHttpClientService } from '../api-http-client.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ContactHttpClientService } from './contact-http-client.service';
 
 @Component({
   selector: 'app-contact',
@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit {
 
   spinnerSize: number;
 
-  constructor(public httpClient: ApiHttpClientService, public snackBar: MatSnackBar) { }
+  constructor(private httpClient: ContactHttpClientService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.createForm();
