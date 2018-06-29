@@ -36,7 +36,6 @@ export class ContactComponent implements OnInit {
   }
 
   async onSubmit(event: any) {
-    console.log(event.target.clientHeight);
     this.spinnerSize = event.target.clientHeight;
     this.submitting = true;
     await this.httpClient.createContact(this.contactForm.value);

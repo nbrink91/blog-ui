@@ -1,33 +1,34 @@
-<div class="container" fxLayout="row" fxLayout.xs="column">
-  <div id="contact-title" fxFlex [fxLayout]="direction">Contact</div>
-  <div fxFlex>
-    <form *ngIf="!submitting" [formGroup]="contactForm" id="contact-form" (ngSubmit)="onSubmit($event)">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Name" formControlName="name" required>
-        <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
-          Name is
-          <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Email" formControlName="email" required>
-        <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
-          Email is
-          <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
-          Please enter a valid email address
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <textarea matInput cdkAutosizeTextarea placeholder="Message" formControlName="message" required></textarea>
-        <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
-          Message is
-          <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">Submit</button>
-    </form>
-    <mat-spinner *ngIf="submitting" id="contact-spinner" diameter="{{spinnerSize}}"></mat-spinner>
-  </div>
-</div>
+<section id="contact">
+  <header id="contact-title">
+    <h1>Contact</h1>
+    <mat-divider></mat-divider>
+  </header>
+  <form id="contact-form" *ngIf="!submitting" [formGroup]="contactForm" (ngSubmit)="onSubmit($event)">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Name" formControlName="name" required>
+      <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
+        Name is
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" formControlName="email" required>
+      <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
+        Email is
+        <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea matInput cdkAutosizeTextarea placeholder="Message" formControlName="message" required></textarea>
+      <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
+        Message is
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">Submit</button>
+  </form>
+  <mat-spinner *ngIf="submitting" id="contact-spinner" diameter="{{spinnerSize}}"></mat-spinner>
+</section>
