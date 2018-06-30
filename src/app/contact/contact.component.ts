@@ -54,4 +54,5 @@ export class ContactComponent implements OnInit {
     }
     this.submitting = false;
   }
+
 }
