@@ -4,26 +4,43 @@ import { createTransport, SendMailOptions, SentMessageInfo } from 'nodemailer';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import Contact from './model/Contact';
+import axios from 'axios';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/verify', async (req: Request, res: Response, next: NextFunction) => {
+    const secret = config().recaptcha.secret;
+    const response = req.query.token;
+
+    const { data } = await axios.get(
+        'https://www.google.com/recaptcha/api/siteverify',
+        {
+            params: {
+                secret,
+                response,
+            }
+        }
+    );
+
+    res.json(data);
+
+    next();
+});
+
 app.post('/email', async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const body: Contact = req.body;
-
-        const gmailEmail = config().gmail.email;
-        const gmailPassword = config().gmail.password;
         const mailTransport = createTransport({
             service: 'gmail',
             auth: {
-                user: gmailEmail,
-                pass: gmailPassword,
+                user: config().gmail.email,
+                pass: config().gmail.password,
             },
         });
 
+        const body: Contact = req.body;
         console.info('Sending mail:');
         const to = 'nbrink7@gmail.com';
         console.info(`To: ${to}`);
@@ -34,7 +51,7 @@ app.post('/email', async (req: Request, res: Response, next: NextFunction) => {
         const text = `Email: ${from}\nMessage: ${body.message}`;
         const mail: SendMailOptions = { to, from, subject, text };
     
-        const data = await new Promise((resolve, reject) => {
+        await new Promise((resolve, reject) => {
             mailTransport.sendMail(mail, (err: Error | null, info: SentMessageInfo) => {
                 if (err) {
                     reject(err);
