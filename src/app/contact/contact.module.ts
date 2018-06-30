@@ -8,12 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactComponent } from './contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { MatDividerModule } from '@angular/material/divider';
-
-library.add(faEnvelope);
 
 @NgModule({
   imports: [
@@ -25,7 +20,6 @@ library.add(faEnvelope);
     MatSnackBarModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FontAwesomeModule,
     MatDividerModule
   ],
   exports: [
