@@ -3,6 +3,7 @@ language: node_js
 node_js:
   - "10"
 cache:
+  yarn: true
   directories:
     - ~/.npm
     - node_modules
@@ -13,24 +14,24 @@ notifications:
 addons:
   chrome: stable
 before_install:
-  - npm i -g npm@latest
-  - npm install -g @angular/cli
+  - yarn self-update
+  - yarn global add @angular/cli@latest
 install:
-  - npm install
+  - yarn install
 jobs:
   include:
     - stage: test
-      script: npm run lint
-    - script: npm run test:ci
-    - script: npm run e2e:ci
+      script: yarn run lint
+    - script: yarn run test:ci
+    - script: yarn run e2e:ci
     - stage: release
       services:
         - docker
       script:
-        - npm run build:ci
+        - yarn run build:ci
         - docker build -t ${IMAGE_NAME} .
         - docker images
-        - npm run semantic-release
+        - yarn run semantic-release
 stages:
   - test
   - name: release

@@ -61,11 +61,10 @@
     "tslint": "~5.10.0",
     "typescript": "~2.7.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nbrink91/blog-ui.git"
-  },
+  "repository": "https://github.com/nbrink91/blog-ui.git",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "author": "Nicholas Brink <nbrink7@gmail.com>",
+  "private": false
 }
