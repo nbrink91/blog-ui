@@ -14,7 +14,6 @@ notifications:
 addons:
   chrome: stable
 before_install:
-  - yarn self-update
   - yarn global add @angular/cli@latest
 install:
   - yarn install
