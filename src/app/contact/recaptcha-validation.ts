@@ -1,4 +1,4 @@
-export interface ReCaptchaValidation {
+export interface RecaptchaValidation {
     success: boolean;
     score?: number;
     action?: string;

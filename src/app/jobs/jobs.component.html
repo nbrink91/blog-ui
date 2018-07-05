@@ -1,0 +1,11 @@
+<section id="jobs">
+  <div class="content">
+    <header class="title">
+      <h1>Work History</h1>
+      <mat-divider></mat-divider>
+    </header>
+    <main>
+        <app-job *ngFor="let job of jobs" [job]="job"></app-job>
+    </main>
+  </div>
+</section>

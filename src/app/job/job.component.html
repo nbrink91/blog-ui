@@ -1,0 +1,11 @@
+<section class="job">
+  <mat-card>
+      <mat-card-title-group>
+          <mat-card-title>{{ job.title }}</mat-card-title>
+          <mat-card-subtitle>{{ job.employer }} ({{ job.start.month }} {{ job.start.year }} - <span *ngIf="job.end">{{ job.end.month }} {{job.end.year}}</span><span *ngIf="!job.end">Present</span>)</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+          {{ job.roles.join('/') }}
+      </mat-card-content>
+  </mat-card>
+</section>

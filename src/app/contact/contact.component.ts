@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import Contact from './model/contact';
+import Contact from './contact';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactHttpClientService } from './contact-http-client.service';
-import { ReCaptcha } from '../recaptcha/ReCaptcha';
+import { ReCaptcha } from '../contact/recaptcha';
 import { environment } from '../../environments/environment.prod';
 
 declare const grecaptcha: ReCaptcha;
@@ -15,7 +15,6 @@ declare const grecaptcha: ReCaptcha;
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
   contact: Contact;
 
   contactForm: FormGroup;
@@ -54,5 +53,4 @@ export class ContactComponent implements OnInit {
     }
     this.submitting = false;
   }
-
 }
